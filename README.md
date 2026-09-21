@@ -69,12 +69,12 @@ Every cortical area in Pinocchio's brain is an instance of the same canonical cl
     ┌────────────────────────────────┐
     |                                |
     |   ┌──────┐        ┌──────┐    |
-    |   | MOT  |        | NAV  |    |  <- Primary motor & border
+    |   | MOT N+1       | NAV  N+2  |  <- Primary motor & border
     |   |  [R] |        |  [B] |    |     (always awake)
     |   └──────┘        └──────┘    |
     |                                |
     |   ┌──────┐        ┌──────┐    |
-    |   | N+3  |        | N+2  |    |  <- Threat hysteresis & Builder
+    |   | N+3  |        | N+4  |    |  <- Threat hysteresis & Builder
     |   |  [O] |        |  [G] |    |     (awake at 0.0 & 0.6 yr)
     |   └──────┘        └──────┘    |
     |                                |
@@ -90,8 +90,8 @@ Every cortical area in Pinocchio's brain is an instance of the same canonical cl
 
 | Area | Awakens | What It Sees | Learns? | The Mechanism |
 |------|---------|--------------|---------|---------------|
-| **N+3** | Birth (0.0 yr) | The predator | No | **Hysteresis integrator**: alert rises fast, decays slowly (tau=16 frames). Pinocchio stays afraid *after* the predator leaves his sight. |
-| **N+2** | 0.6 yr | Yellow material & nest | No | **Energy field navigation**: feels material proximity, carries, deposits. Maturation via continuous sigmoid gate. |
+| **N+4** | Birth (0.0 yr) | The predator | No | **Hysteresis integrator**: alert rises fast, decays slowly (tau=16 frames). Pinocchio stays afraid *after* the predator leaves his sight. |
+| **N+3** | 0.6 yr | Yellow material & nest | No | **Energy field navigation**: feels material proximity, carries, deposits. Maturation via continuous sigmoid gate. |
 | **N+4** | 1.0 yr | Past outcomes | Yes | **Experience plasticity**: after each step, asks "Did hunger drop? Did safety rise?" and permanently adjusts MOT weights. |
 | **N+5** | 1.5 yr | Peer (the other creature) | Yes | **Social field**: senses Peer as a presence gradient. Reinforces approach/avoid based on hedonic outcome of proximity. |
 
@@ -99,7 +99,7 @@ Every cortical area in Pinocchio's brain is an instance of the same canonical cl
 
 ---
 
-## 🔬 Case Study: How N+3 Was Born
+## 🔬 Case Study: How N+4 Was Born
 
 This is not a bugfix. This is **architectural co-creation**.
 
@@ -122,7 +122,7 @@ The AI **invented the problem** (the creature needs physical memory of danger, n
 ### The Result
 
 ```python
-# N+3: Threat Hysteresis
+# N+4: Threat Hysteresis
 perception = sigmoid(PRED_RADIUS - dist_to_predator)
 
 rise  = K_ALERT * perception * (1 - alert)      # fast
@@ -164,7 +164,7 @@ We are not adding modules. We are **awakening modes of attention** across a temp
 ```
 PHASE 1: REFLEX          PHASE 2: INSTINCT        PHASE 3: LEARNING
 ┌─────────────┐          ┌─────────────┐          ┌─────────────┐
-|   N+3       |          |   N+2       |          |   N+4       |
+|   N+4       |          |   N+3       |          |   N+4       |
 |  (born)     |    ->    | (0.6 yr)    |    ->    | (1.0 yr)    |
 |  FLEE       |          |  BUILD      |          |  ADAPT      |
 |  tau ~ 16fr |          |  tau ~ min  |          |  tau ~ step |
@@ -234,11 +234,13 @@ The-Raising-of-Pinocchios-Brain/
 ├── Creature_N3_OK.py              <- Current simulation (N+2, N+3, N+4, N+5)
 |
 ├── docs/
-|   ├── N+2_The_Builder.md         <- Energy fields & continuous loading
-|   ├── N+3_Threat_Hysteresis.md   <- The asymmetric integrator
-|   ├── N+4_The_Learner.md         <- Experience-based plasticity
-|   ├── N+5_The_Social.md          <- Peer presence fields
-|   └── N+6_The_Anticipator.md     <- [AWAKENING SOON]
+|   |-  N+1        
+|   ├── N+2_
+|   |-  N+3   The_Builder.md         <- Energy fields & continuous loading
+|   ├── N+4_Threat_Hysteresis.md   <- The asymmetric integrator
+|   ├── N+5_The_Learner.md         <- Experience-based plasticity
+|   ├── N+6_The_Social.md          <- Peer presence fields
+|   └── N+7_The_Anticipator.md     <- [AWAKENING SOON]
 |
 ├── theory/
 |   ├── Canonical_Tissue.md        <- Why 25 CMs + softmax is enough
