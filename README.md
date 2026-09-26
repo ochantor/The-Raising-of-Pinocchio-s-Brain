@@ -115,9 +115,9 @@ Notice what happened. I did not say: *"Fix the ghost predator bug."* I gave an *
 - Must improve survival (validated by simulation)
 - No boolean flags (the defining constraint of this entire architecture)
 
-The AI **invented the problem** (the creature needs physical memory of danger, not instantaneous reaction) **and the mechanism** (asymmetric hysteresis integrator) from that brief. I implemented it. The simulation validated it. Survival improved.
+The co-work human AI develops the basic operating ambient and re-invented the problem (the creature needs physical memory of danger, not instantaneous reaction) **and the mechanism** (asymmetric hysteresis integrator) from that brief. I implemented it. The simulation validated it. Survival improved.
 
-**The AI had no access to the simulation.** It proposed a dynamical mechanism based on principles — and it worked.
+**The AI was pressured by the human propmt and probably use its connetion with biology or other sciences to produce a valid solution.** It proposed a dynamical mechanism based on principles — and it worked.
 
 ### The Result
 
@@ -130,7 +130,7 @@ fall  = (alert / TAU_N3) * (1 - perception)      # slow
 alert += dt * (rise - fall)                      # continuous
 ```
 
-Pinocchio now flees for ~16 frames *after* losing sight of the predator. **No weights were trained. Just physics. Just a brief, a dialogue, and a validation.**
+Pinocchio now flees for ~16 frames *after* losing sight of the predator. **No weights were trained. Just physics. Just a brief, a dialogue human-LLM  and a validation.**
 
 > *This is the methodology: I give an open brief with constraints. The AI proposes a mechanism I would not have imagined alone. The simulation tells us if the mechanism survives.*
 
@@ -206,7 +206,7 @@ Every cortical area follows this protocol:
 |  2. AI proposes the dynamical mechanism                    |
 |     "Asymmetric integrator with hysteresis as emotional     |
 |      inertia."                                              |
-|     (The AI had no access to the simulation.)              |
+|     (The AI has access to the simulation.)              |
 |                      |                                      |
 |  3. HUMAN implements & integrates                          |
 |     Code the Tissue, wire into softmax competition          |
